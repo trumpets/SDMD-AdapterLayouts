@@ -91,17 +91,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_item_list_view:
-                showListView();
-                return true;
-
-            case R.id.menu_item_grid_view:
-                showGridView();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.menu_item_list_view) {
+            showListView();
+            return true;
+        } else if (item.getItemId() == R.id.menu_item_grid_view) {
+            showGridView();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
     }
 
