@@ -1,6 +1,7 @@
 package gr.academic.city.sdmd.adapterlayouts;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class ItemAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Item getItem(int position) {
         return this.items.get(position);
     }
 
@@ -44,14 +45,17 @@ public class ItemAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.layout_item, parent, false);
         }
 
-        Item item = (Item) getItem(position);
+        Item item = getItem(position);
 
-        TextView nameTextView = (TextView) convertView.findViewById(R.id.tv_name);
-        TextView quantityTextView = (TextView) convertView.findViewById(R.id.tv_quantity);
+        TextView nameTextView = convertView.findViewById(R.id.tv_name);
+        TextView quantityTextView = convertView.findViewById(R.id.tv_quantity);
+
+        Log.d("Ivo", "Old value is " + nameTextView.getText().toString() + " but we will set it to " + item.getName());
 
         nameTextView.setText(item.getName());
         nameTextView.setTextColor(item.getColor());
         quantityTextView.setText(String.valueOf(item.getQuantity()));
+        quantityTextView.setTextColor(item.getColor());
 
         return convertView;
     }
